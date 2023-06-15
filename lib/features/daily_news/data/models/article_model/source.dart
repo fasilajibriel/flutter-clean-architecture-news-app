@@ -30,14 +30,4 @@ class Source {
   ///
   /// Converts [Source] to a JSON string.
   String toJson() => json.encode(toMap());
-
-  Source copyWith({
-    dynamic id,
-    String? name,
-  }) {
-    return Source(
-      id: id ?? this.id,
-      name: name ?? this.name,
-    );
-  }
 }

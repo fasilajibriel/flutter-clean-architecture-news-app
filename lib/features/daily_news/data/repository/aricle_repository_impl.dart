@@ -4,7 +4,7 @@ import 'package:flutter_clean_architecture_news_app/features/daily_news/domain/r
 
 class ArticleRepositoryImpl implements ArticleRepository {
   @override
-  Future<DataState<List<ArticleEntity>>> getNewsArticles() {
+  Future<DataState<ArticleEntity>> getNewsArticles() {
     // TODO: implement getNewsArticles
     throw UnimplementedError();
   }

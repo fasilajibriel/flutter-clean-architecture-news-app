@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'source.dart';
 
-class ArticleModel {
+class Article {
   String? title;
   dynamic author;
   Source? source;
   String? publishedAt;
   String? url;
 
-  ArticleModel({
+  Article({
     this.title,
     this.author,
     this.source,
@@ -22,10 +22,12 @@ class ArticleModel {
     return 'Article(title: $title, author: $author, source: $source, publishedAt: $publishedAt, url: $url)';
   }
 
-  factory ArticleModel.fromMap(Map<String, dynamic> data) => ArticleModel(
+  factory Article.fromMap(Map<String, dynamic> data) => Article(
         title: data['title'] as String?,
         author: data['author'] as dynamic,
-        source: data['source'] == null ? null : Source.fromMap(data['source'] as Map<String, dynamic>),
+        source: data['source'] == null
+            ? null
+            : Source.fromMap(data['source'] as Map<String, dynamic>),
         publishedAt: data['publishedAt'] as String?,
         url: data['url'] as String?,
       );
@@ -41,28 +43,12 @@ class ArticleModel {
   /// `dart:convert`
   ///
   /// Parses the string and returns the resulting Json object as [Article].
-  factory ArticleModel.fromJson(String data) {
-    return ArticleModel.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory Article.fromJson(String data) {
+    return Article.fromMap(json.decode(data) as Map<String, dynamic>);
   }
 
   /// `dart:convert`
   ///
   /// Converts [Article] to a JSON string.
   String toJson() => json.encode(toMap());
-
-  ArticleModel copyWith({
-    String? title,
-    dynamic author,
-    Source? source,
-    String? publishedAt,
-    String? url,
-  }) {
-    return ArticleModel(
-      title: title ?? this.title,
-      author: author ?? this.author,
-      source: source ?? this.source,
-      publishedAt: publishedAt ?? this.publishedAt,
-      url: url ?? this.url,
-    );
-  }
 }
